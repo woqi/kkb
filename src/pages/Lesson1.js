@@ -3,9 +3,14 @@ import Input from "../components/Input";
 // import { createForm } from 'rc-form';
 import createForm from '../components/my-rc-form.js'
 
-@createForm()
+const nameRules = { required: true, message: "请输入姓名！" };
+const passworRules = { required: true, message: "请输入密码！" };
+
+@createForm
+
 //这样每输入一次整个表单都重复渲染
 class Lesson1 extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -21,13 +26,23 @@ class Lesson1 extends Component {
     })
   }
   submit = () => {
-    const { getFieldsValue } = this.props.form
-    console.log('submit-----', getFieldsValue())
+    const { validateFields} = this.props.form
+    // getFieldsValue, 
+    // console.log('submit-----', getFieldsValue())
+    validateFields((err,val)=>{
+
+      if(err){
+        console.log('报错---',err)
+      }else{
+        console.log('校验成功',val)
+      }
+    })
 
   }
   save = (name, e) => {
     // console.log('namne',name)
     let val = e.target.value
+    // console.log('val----',val)
     if (name === 'username') {
       this.setState({ username: val })
     }
@@ -39,19 +54,19 @@ class Lesson1 extends Component {
 
   }
   render() {
-    console.log('props', this.props)
     const { username, password } = this.state
     const { getFieldDecorator } = this.props.form
+    // console.log('props', this.props)
     return (
       <div>
         {/* getFieldDecorator接受一个组件返回新组件 */}
-        {getFieldDecorator('username')(
+        {getFieldDecorator('username', {rules:[nameRules]})(
           <Input placeholder="Username"
             val={username}
             onChange={(e) => this.save('username', e)}
           />
         )}
-        {getFieldDecorator('password')(
+        {getFieldDecorator('password',{rules: passworRules})(
           <Input placeholder="Password"
             val={password}
             onChange={(e) => this.save('password', e)}

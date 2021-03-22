@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { Component, useEffect } from 'react'
 
 import Form, { Field } from "../components/my-rc-field-form/index";
 import Input from "../components/Input";
@@ -20,7 +20,7 @@ export default function MyRCFieldForm() {
 
 
   useEffect(() => {
-    // console.log("form", form); //sy-log
+    console.log("form-----", form); //sy-log
     form.setFieldsValue({ username: "default" });
   }, []);
 
@@ -39,3 +39,39 @@ export default function MyRCFieldForm() {
     </div>
   )
 }
+
+// export default class MyRCFieldForm extends Component {
+//   formRef = React.createRef();
+//   componentDidMount() {
+//     console.log("form", this.formRef.current); //sy-log
+//     this.formRef.current.setFieldsValue({username: "default"});
+//   }
+
+//   onFinish = val => {
+//     console.log("提交成功", val); //sy-log
+//   };
+
+//   // 表单校验失败执行
+//   onFinishFailed = val => {
+//     console.log("失败", val); //sy-log
+//   };
+//   render() {
+//     return (
+//       <div>
+//         <h3>MyRCFieldForm</h3>
+//         <Form
+//           ref={this.formRef}
+//           onFinish={this.onFinish}
+//           onFinishFailed={this.onFinishFailed}>
+//           <Field name="username" rules={[nameRules]}>
+//             <Input placeholder="Username" />
+//           </Field>
+//           <Field name="password" rules={[passworRules]}>
+//             <Input placeholder="Password" />
+//           </Field>
+//           <button>Submit</button>
+//         </Form>
+//       </div>
+//     );
+//   }
+// }

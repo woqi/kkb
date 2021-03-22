@@ -51,6 +51,7 @@ class FormStore {
       ...this.store,
       ...newStore
     }
+    console.log('newstore',this.store)
 
     //数组中找到实例然后更新
     this.fieldEntities.forEach(e => {
@@ -101,12 +102,23 @@ class FormStore {
     }
   }
 }
-export default function useForm() {
+export default function useForm(form) {//此处获取实例
   const formRef = React.useRef()
 
-  if (!formRef.current) {
-    const formStore = new FormStore()
-    formRef.current = formStore.getForm()
+  if(!formRef.current){
+    //实现复用
+    if(form){
+      formRef.current = form
+    }else{
+     const formStore = new FormStore()
+     formRef.current = formStore.getForm()
+    }
   }
+
+  // if (!formRef.current) {
+  //   const formStore = new FormStore()//此处组件每一次改动都要new一个，没有实现把上一次的参数留下来
+  //   formRef.current = formStore.getForm()
+  // }
+
   return [formRef.current]
 }
