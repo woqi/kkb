@@ -1,7 +1,8 @@
-import { counterReducer } from "./reducer";
+import { counterReducer, counterReducer2 } from "./reducer";
 
-// import { applyMiddleware, createStore } from 'redux'
-import { createStore, applyMiddleware } from "../components/my-redux";
+// import { applyMiddleware, createStore,combineReducers } from 'redux'
+import { createStore, applyMiddleware,combineReducers } from "../components/my-redux";
+
 
 // import thunk from "redux-thunk";
 
@@ -16,7 +17,7 @@ function thunk(dispatch, getState) {
   }
 }
 
-function _logger({dispatch, getState}) {
+function _logger({ dispatch, getState }) {
   return next => action => {
     console.log('++++++++++++++++++++++++++')
 
@@ -33,6 +34,12 @@ function _logger({dispatch, getState}) {
   }
 }
 
-const store = createStore(counterReducer, applyMiddleware(thunk, _logger))
+
+const store = createStore(
+  combineReducers({
+    count: counterReducer,
+    countTwo: counterReducer2
+  }),
+  applyMiddleware(thunk, _logger))
 
 export default store

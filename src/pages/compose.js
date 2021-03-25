@@ -29,8 +29,8 @@ function f4(arg) {
 //compose的返回值是函数
 function compose(...funcs) {
   //处理边界问题
-  if(funcs.length === 0){
-    return ()=>{}
+  if (funcs.length === 0) {
+    return () => { }
   }
 
   //链式处理
@@ -45,5 +45,13 @@ function compose(...funcs) {
   //   }
   // })
 }
-let res = compose(f1, f2, f3,f4)
-console.log('res',res)
+let res = compose(f1, f2, f3, f4)
+console.log('res', res)
+
+//柯里化
+function fn(a) {
+  return (b) => {
+    return a + b
+  }
+}
+fn(2)(3)
