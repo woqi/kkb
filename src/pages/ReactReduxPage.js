@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 // import store from "../store/index";
-import { connect, } from "react-redux";//将所有state和dispatch放在props上
-import { bindActionCreators } from "redux";
+// import { connect, } from "react-redux";//将所有state和dispatch放在props上
+// import { bindActionCreators } from "redux";
+import { bindActionCreators, connect } from "../MyReact/my-react-redux.js";
 
 @connect(
   //有两个参数
@@ -9,7 +10,7 @@ import { bindActionCreators } from "redux";
   (count) => (count),
   //count => ({c: count})//如果想修改名字 props上就是c了
 
-  //mapDispatchToProps
+  //mapDispatchToProps // 非必传
 
   // {
   //   add: () => ({ type: 'ADD' })
@@ -27,21 +28,21 @@ import { bindActionCreators } from "redux";
   // }
 
   //如果有很多方法 此时可以用 bindActionCreators
-  
+
   dispatch => {
     let creators = {
-       _add :() => ({ type: 'ADD' }),
-       minus: () => ({ type: 'MINUS' })
+      _add: () => ({ type: 'ADD' }),
+      minus: () => ({ type: 'MINUS' })
     }
-    creators = bindActionCreators(creators,dispatch)
+    creators = bindActionCreators(creators, dispatch)
     return {
       dispatch,
       ...creators
     }
   }
-  
+
 )
-class ReduxPage extends Component {
+class ReactReduxPage extends Component {
 
   add = () => {//同步
     // store.dispatch({ type: 'ADD', payload: 1 })
@@ -61,7 +62,7 @@ class ReduxPage extends Component {
 
   render() {
     console.log('props----', this.props)
-    const { count, _add, countTwo, minus} = this.props
+    const { count, _add, countTwo, minus } = this.props
     return (
       <div>
         ReduxPage:
@@ -81,4 +82,4 @@ class ReduxPage extends Component {
     )
   }
 }
-export default ReduxPage
+export default ReactReduxPage
