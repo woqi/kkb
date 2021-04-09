@@ -1,5 +1,6 @@
 
 import './App.css';
+import React, { useState } from 'react'
 
 // import ComparePage from "./pages/ComparePage";
 // import RouteComponePage from "./pages/RouteComponePage";
@@ -8,15 +9,22 @@ import './App.css';
 import MyReactRouter from "./pages/MyReactRouter";
 
 
+
 function App() {
+
   return (
     <div className="App">
       {/* <ComparePage /> */}
       {/* <RouteComponePage /> */}
       {/* <RoutePage /> */}
       <MyReactRouter />
+
     </div>
   );
 }
 
 export default App;
+
+
+
+

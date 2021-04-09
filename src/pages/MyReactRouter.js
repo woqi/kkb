@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Link } from "../my-react-router-dom";
 export default function MyReactRouter() {
   return (
     <div>
-      MyReactRouter
       <BrowserRouter>
         <Link to="/">首页</Link>
         <Link to="/user">用户</Link>
