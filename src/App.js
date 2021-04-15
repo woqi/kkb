@@ -6,7 +6,11 @@ import React, { useState } from 'react'
 // import RouteComponePage from "./pages/RouteComponePage";
 // import RoutePage from "./pages/RoutePage";
 
-import MyReactRouter from "./pages/MyReactRouter";
+// import MyReactRouter from "./pages/MyReactRouter";
+
+// import UseWithRouter from './pages/UseWithRouter'
+
+import UseReactRouterHook from "./pages/UseReactRouterHook";
 
 
 
@@ -17,8 +21,9 @@ function App() {
       {/* <ComparePage /> */}
       {/* <RouteComponePage /> */}
       {/* <RoutePage /> */}
-      <MyReactRouter />
-
+      {/* <MyReactRouter /> */}
+      {/* <UseWithRouter /> */}
+      <UseReactRouterHook />
     </div>
   );
 }

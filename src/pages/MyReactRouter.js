@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Link } from "../my-react-router-dom";
+import { BrowserRouter, Route, Link, Switch } from "../my-react-router-dom";
 
 export default function MyReactRouter() {
   return (
@@ -10,19 +10,40 @@ export default function MyReactRouter() {
         <Link to="/login">登陆</Link>
         <Link to="/product/123">404</Link>
 
+        <Switch>
+          <Route exact path="/"
+            // children={Children}
+            component={Home}
+            render={Render}
+          />
+          <Route path="/user" component={User} />
+          <Route path="/login" component={Login} />
+          {/* 使用route默认的match */}
+          <Route path="*" component={Nomatch_404} />
+        </Switch>
 
-        <Route exact path="/" component={Home} />
-        <Route path="/user" component={User} />
-        <Route path="/login" component={Login} />
-        <Route path="*" component={Nomatch_404} />
 
-        
+
       </BrowserRouter>
 
     </div>
   )
 }
 
+function Render() {
+  return (
+    <div>
+      Render
+    </div>
+  )
+}
+function Children() {
+  return (
+    <div>
+      Children
+    </div>
+  )
+}
 
 function Home() {
   return (
