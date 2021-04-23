@@ -11,12 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.green{
-  color: green;
-}
-.pink{
-  color: palevioletred;
-}
-.red{
-  color:red;
+
+a{
+  margin-right: 10px;
 }

@@ -1,10 +1,21 @@
 
-export const counterReducer = (state = 0, { type, payload = 1 }) => {
+const userInit = {
+  isLogin: false,
+  userInfo: {id: null, name: "", score: 0},
+  loading: false,
+  err: {msg: ""}
+}
+
+export const loginReducer = (state = { ...userInit }, { type, payload }) => {
   switch (type) {
-    case 'ADD':
-      return state + payload
-    case 'MINUS':
-      return state - payload
+    case 'REQUEST':
+      return { ...state, loading: true }
+    case 'LOGIN_SUCCESS':
+      return { ...state, isLogin: true, loading: false, userInfo: { ...payload } }
+    case 'LOGIN_FAILURE':
+      return {...state, ...userInit, ...payload}
+    case 'LOGOUT_SUCCESS':
+      return {...state, isLogin: false, loading: false}
     default:
       return state
   }
