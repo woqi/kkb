@@ -4,7 +4,7 @@ export function login(userInfo) {
       if (userInfo.name === '小明') {
         resolve({ id: 123, name: '小明登陆了' })
       } else {
-        reject({ msg: '用户不存在数据库' })
+        reject({ err: { msg: "用户名或密码错误" } });
       }
     }, 1000);
   })
